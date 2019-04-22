@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Login</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'catalog/stylesheet.css' %}">
+    <script src="{% static 'catalog/indexjs.js' %}"></script>
+<body>
+
+  <div class="loginbox">
+  <!-- <img src="image.png" class="avatar"> needs image-->
+  <h1>Login</h1>
+  <hr id="breakline"> <br>
+  <form method="POST">
+    {% csrf_token %}
+    <p>Username</p>
+    <input type="text" name="" placeholder="Enter Username">
+    <p>Password</p>
+    <input type="password" name="" placeholder="Enter Password">
+    <input type="submit" name="" onclick="gotoMainPage()" value="Login">
+    <a href="forgot.html">Forgot password? </a><br>
+    <a href="register.html">Dont have an account? Sign up!</a> 
+  </form> 
+</body>
+</head>
+</html>
