@@ -10,19 +10,20 @@ from django.forms import ModelForm
 
 # Create your models here.
 # Model representing a movie.
-class Movies(models.Model):
-    movie_title = models.CharField(max_length=200, verbose_name='Title')
-    description = models.TextField(verbose_name='Movie Description')
+class Movie(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Title')
     year = models.IntegerField(verbose_name='Year')
-    actor = models.CharField(max_length=1000, verbose_name="Actors' Names")
-    director = models.CharField(max_length=200, verbose_name='Director')
+    actors = models.CharField(max_length=1000, verbose_name="Actors")
+    director = models.CharField(max_length=200, verbose_name="Director")
     link = models.URLField(verbose_name='Youtube Link')
-    genre_name = models.CharField(max_length=100, verbose_name='Genre')
-
+    genre = models.CharField(max_length=100, verbose_name="Genre" )
+    img = models.CharField(max_length=300, verbose_name="Image" )
+    img_r = models.CharField(max_length=300, verbose_name="Image R" )
+    hd_link = models.URLField(verbose_name='HD Link')
     
     # __str__() method to return a human-redable string for each object.
     def __str__(self):
-        return self.movie_title
+        return self.title
 
     
     def get_absolute_url(self):
