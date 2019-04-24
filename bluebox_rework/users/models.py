@@ -1,9 +1,11 @@
 from django.db import models
 
+
 # Create your models here.
 class Users(models.Model):
     name = models.CharField(max_length=200, verbose_name='Name')
-    lastname = models.CharField(max_length=200, verbose_name='Last')
+    lastName = models.CharField(max_length=200, verbose_name='Last Name')
+    email = models.CharField(max_length=50, verbose_name='E-Mail')
     userName = models.CharField(max_length=200, verbose_name='User Name')
     password = models.CharField(max_length=50, verbose_name='Password')
     CCVNumber = models.IntegerField(verbose_name='CCV Number')
@@ -13,6 +15,4 @@ class Users(models.Model):
     #__str__() method to return a human-redable string for each object.
     def __str__(self):
         return self.name
-
-
     

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from users.forms import RegisterForm
+from users.forms import RegisterForm, LoginForm, ForgotForm
 
 # Create your views here.
 def register(request):
@@ -17,6 +17,25 @@ def testRegister(request):
 
     form = RegisterForm()
     return render(request, 'users/testRegister.html', {'form': form})
+
+def testLogin(request):
+    if request.method == 'POST':
+        form = LoginForm()
+        if form.is_valid:
+            userName = form.cleaned_data['userName']
+            password = form.cleaned_data['password']
+            print(userName, password)
+    form = LoginForm()
+    return render(request, 'users/testLogin.html', {'form': form} )
+
+def testForgot(request):
+    if request.method == 'POST':
+        form = ForgotForm()
+        if form.is_valid:
+            email = form.cleaned_data['email']
+            print(email)
+    form = ForgotForm()
+    return render(request, 'users/testForgot.html', {'form': form} )
 
 def login(request):
     # if request.method == 'POST':

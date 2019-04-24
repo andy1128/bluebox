@@ -2,6 +2,11 @@ from django.db import models
 # Used to generate Urls by reversing the URL pattern.
 from django.urls import reverse 
 from django.contrib.auth.models import User
+from django.forms import ModelForm
+
+# SEARCH_CHOICES = (
+#     ('Title', 'Description',)
+# )
 
 # Create your models here.
 # Model representing a movie.
@@ -23,5 +28,10 @@ class Movies(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this movie."""
         return reverse('movie-detail', args=[str(self.id)])
+
+#class SearchForm(ModelForm):
+#     class Meta:
+#         model = Movies
+
 
 
