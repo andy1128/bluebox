@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Bluebox</title>
+
+{% load static %}
+ <link rel="stylesheet" type="text/css" href="{% static 'catalog/indexcss.css' %}">
+
+    <script src="{% static 'catalog/indexjs.js' %}"></script>
+    <!--
+    <script>
+        function myFunction() {
+        document.getElementById("greating_id").innerHTML = "Mom?";
+        }
+    </script>
+-->
+</head>
+<body class="mainpage">
+
+    <h1 class="greating" id="greating_id">
+		Our Movies
+    </h1>
+    
+    <div class="serachbox">
+        <form>
+            <input type="text" name="" placeholder="Search Movie">
+            <input type="submit" name="" value="Search">
+        </form>
+
+
+    </div>    
+
+    <div class="row">
+        <div class="col" id="col_id">
+<!--        <img src="Images/poster1.jpg" height="400">-->
+<!--
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+        <img src="Images/poster1.jpg" height="400">
+        <img src="Images/poster2.jpg" height="400">
+        <img src="Images/poster3.jpg" height="400">
+        <img src="Images/poster4.jpg" height="400">
+        <img src="Images/poster5.jpg" height="400">
+        <img src="Images/poster6.jpg" height="400">
+        <img src="Images/poster7.jpg" height="400">
+        <img src="Images/poster8.jpg" height="400">
+        <img src="Images/poster9.jpg" height="400">
+        <img src="Images/poster10.jpg" height="400">
+        <img src="Images/poster11.jpg" height="400">
+        <img src="Images/poster12.jpg" height="400">
+        <img src="Images/poster13.jpg" height="400">
+-->
+        </div>
+    </div>
+    
+<button type="button" onclick="addMovie()">Load more movies</button>    
+    
+
+</body>
+</html>
