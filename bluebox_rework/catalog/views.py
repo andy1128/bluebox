@@ -1,6 +1,7 @@
 from django.shortcuts import render
 #Connects the database to the website. Need code to actually display data.
 from catalog.models import Movies
+from catalog.forms import CheckoutForm
 
 
 # Create your views here.
@@ -13,3 +14,16 @@ def testIndex(request):
         print(search_query)
     return render(request, 'catalog/testIndex.html')
 
+def checkout(request):
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            lastName = form.cleaned_data['lastName']
+            CCVNumber = form.cleaned_data['CCVNumber']
+            expirationDate = form.cleaned_data['expirationDate']
+            print(name, lastName, CCVNumber, expirationDate)
+
+    form = CheckoutForm()
+    return render(request, 'catalog/checkout.html', {'form': form})
+        
