@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from users.forms import RegisterForm, LoginForm, ForgotForm
 
-
 # This function obtains the data submitted by the user, passes the data through the .is_valid class which makes sure the data is consistent with the backend
 # and prints the data to command prompt, thus demonstrating that we are currently receiving user data.
 def testRegister(request):
@@ -25,10 +24,10 @@ def testRegister(request):
 def testLogin(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        if form.is_valid:
-            userName = form.cleaned_data['userName']
+        if form.is_valid():
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            print(userName, password)
+            print(email, password)
     form = LoginForm()
     return render(request, 'users/testLogin.html', {'form': form} )
 

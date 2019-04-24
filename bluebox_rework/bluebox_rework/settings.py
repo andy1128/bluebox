@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'catalog.apps.CatalogConfig',
     'users.apps.UsersConfig',
     'youtube.apps.YoutubeConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'bluebox-home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
