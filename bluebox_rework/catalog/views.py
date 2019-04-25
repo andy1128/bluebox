@@ -1,6 +1,6 @@
 from django.shortcuts import render
 #Connects the database to the website. Need code to actually display data.
-from catalog.models import Movies
+from catalog.models import Movie
 from catalog.forms import CheckoutForm
 
 
