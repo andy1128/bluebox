@@ -1,150 +1,64 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initia-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Bluebox</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'catalog/indexcss.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'catalog/index_style.css' %}">
     <script src="{% static 'catalog/indexjs.js' %}"></script>
-    <!--
-    <script>
-        function myFunction() {
-        document.getElementById("greating_id").innerHTML = "Mom?";
-        }
-    </script>
--->
-<body class="mainpage">
-
-    <h1 class = "greating" id="greating_id">
-        Movies
-    </h1>
-
-    <div class="searchbox">
-        <form method="GET", action="testIndex.html">
+<body class="body_class">    
+    <div class="jumbotron jumbotron-fluid" >
+        <div  class="container">            
+            <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image">
+        </div>
+    </div>    
+    <div>
+        <div class="container" >
+            <div class="row">
+                <h1 class="display-6">Movies</h1>
+            </div>
+        <hr/>
+        <div class="container mr-5">
+            <div class="input-group" mt-5>
+                <input type="text" class="form-control" placeholder="Enter movie name here">
+                    <div class="input-group-prepend">
+                        <button class="btn bnt-outline-secondary" type="button">&#x1F50D;</button>
+                </div>
+            </div>
+            </div>    
+            {% load crispy_forms_tags %}
+            {% block content %}
+            <form method="GET" action="testIndex.html">
             {% csrf_token %}
-            {{ form }}
-            <input id="search_box" type="text" name="search_box" placeholder="Search...">
-            <button id="search_submit"  type="Submit">Submit</button>
-        </form>
-    </div>
+                {{form|crispy}}
+            </form>
+            <div class="container" id="id_image">  
+                <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image">
+            </div>
+            {% endblock %}
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <button class="btn btn-dark"type="button" onclick="addMovie()">Load more movies</button>  
+                </div>
+                <script type="text/javascript">
+                    DJANGO_STATIC_URL = '{{ STATIC_URL }}';
+                    function addMovie() {
+                    //    alert("Hi");                        
+                        var img = document.createElement("IMG");
+                        img.src = "/static/catalog/bluebox_logo.png";
 
-    <div class="row">
-            <div class="col" id="col_id">
-                <img src="{% static 'catalog/doge.jpg' %}">
-    <!--        <img src="Images/poster1.jpg" height="400">-->
-    <!--
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-            <img src="Images/poster1.jpg" height="400">
-            <img src="Images/poster2.jpg" height="400">
-            <img src="Images/poster3.jpg" height="400">
-            <img src="Images/poster4.jpg" height="400">
-            <img src="Images/poster5.jpg" height="400">
-            <img src="Images/poster6.jpg" height="400">
-            <img src="Images/poster7.jpg" height="400">
-            <img src="Images/poster8.jpg" height="400">
-            <img src="Images/poster9.jpg" height="400">
-            <img src="Images/poster10.jpg" height="400">
-            <img src="Images/poster11.jpg" height="400">
-            <img src="Images/poster12.jpg" height="400">
-            <img src="Images/poster13.jpg" height="400">
-    -->
+                    //    document.getElementsByClassName("container").appendChild(img);
+                        document.getElementById('id_image').appendChild(img);
+
+                    }
+                </script>
             </div>
         </div>
-        
-    <button type="button" onclick="addMovie()">Load more movies</button>   
     
+    </div>
 </body>
 </head>
 </html>
