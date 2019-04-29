@@ -13,8 +13,8 @@ from django.forms import ModelForm
 class Movie(models.Model):
     title = models.CharField(max_length=200, verbose_name="Title")
     year = models.IntegerField(verbose_name='Year')
-    actors = models.CharField(max_length=1000, verbose_name="Actors")
     director = models.CharField(max_length=200, verbose_name="Director")
+    actors = models.CharField(max_length=1000, verbose_name="Actors")
     link = models.URLField(verbose_name='Youtube Link')
     genre = models.CharField(max_length=100, verbose_name="Genre" )
     img = models.CharField(max_length=300, verbose_name="Image" )
