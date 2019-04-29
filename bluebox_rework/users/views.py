@@ -4,7 +4,7 @@ from users.forms import RegisterForm, LoginForm, ForgotForm
 
 # This function obtains the data submitted by the user, passes the data through the .is_valid class which makes sure the data is consistent with the backend
 # and prints the data to command prompt, thus demonstrating that we are currently receiving user data.
-def testRegister(request):
+def Register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -19,9 +19,9 @@ def testRegister(request):
             print(name, lastName, email, userName, password, CCVNumber, expirationDate, DOB)
 
     form = RegisterForm()
-    return render(request, 'users/testRegister.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})
 
-def testLogin(request):
+def Login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -29,15 +29,15 @@ def testLogin(request):
             password = form.cleaned_data['password']
             print(email, password)
     form = LoginForm()
-    return render(request, 'users/testLogin.html', {'form': form} )
+    return render(request, 'users/login.html', {'form': form} )
 
-def testForgot(request):
+def Forgot(request):
     if request.method == 'POST':
         form = ForgotForm(request.POST)
         if form.is_valid:
             email = form.cleaned_data['email']
             print(email)
     form = ForgotForm()
-    return render(request, 'users/testForgot.html', {'form': form} )
+    return render(request, 'users/forgot.html', {'form': form} )
 
 

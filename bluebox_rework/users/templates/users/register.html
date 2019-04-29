@@ -1,36 +1,30 @@
-<html>
-<head>
-  <title>Register</title>
-  {% load static %}
- <link rel="stylesheet" type="text/css" href="{% static 'catalog/stylesheet.css' %}">
-<body>
-
-  <div class="registerbox">
-  <!-- <img src="image.png" class="avatar"> needs image-->
-  <h1>Register</h1>
-  <hr id="breakline"> <br>
-  <form method="POST">
-    {% csrf_token %}
-    <p>First Name</p>
-    <input type="text" name="" placeholder="Enter First Name">
-    <p>Last Name</p>
-    <input type="text" name="" placeholder="Enter Last Name">
-    <p>Username</p>
-    <input type="text" name="" placeholder="Enter Username">
-    <p>password</p>
-    <input type="password" name="" placeholder="Enter password">
-    <p>Card Number</p>
-    <input type="text" name="" placeholder="Enter card number">
-    <p>CCV Number</p>
-    <input type="text" name="" placeholder="Enter ccv number">
-    <p>Expiration Date</p>
-    <input type="text" name="" placeholder="Enter expiration date">
-    <p>Birthday</p>
-    <input type="text" name="" placeholder="Enter birthday">
-    <input type="submit" name="" value="Register">
-    
-  </form> 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'users/reg_style.css' %}">
+    <title>Register</title>
+  </head>
+<body class="body_class">
+      <div class="container mr-5" >
+          <div class="row justify-content-center">
+              <div  class="col-6 mt-1" >
+                <h1 class="mt-5 ml-4">Register</h1>
+                <hr id="id_line" class="ml-1" width="180px" margin-left="10px"/>
+                {% load crispy_forms_tags %}
+                {% block content %}
+                <form class="form_class mr-5" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-dark login_style mt-2">Login</button>
+                </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
-</head>
 </html>
-

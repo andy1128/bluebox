@@ -5,14 +5,14 @@ from catalog.forms import CheckoutForm
 
 
 # Create your views here.
-def index(request):
-    return render(request, 'catalog/index.html')
+# def index(request):
+#     return render(request, 'catalog/index.html')
 
-def testIndex(request):
+def Index(request):
     if request.method == 'GET': #If the form is submitted
         search_query = request.GET.get('search_box', None) #Obtain the value from the search box and asssign it to search_query
         print(search_query)
-    return render(request, 'catalog/testIndex.html')
+    return render(request, 'catalog/index.html')
 
 def checkout(request):
     if request.method == 'POST':
