@@ -26,4 +26,6 @@ def checkout(request):
 
     form = CheckoutForm()
     return render(request, 'catalog/checkout.html', {'form': form})
-        
+
+def viewpage(request):
+    return render(request, 'catalog/viewpage.html')
