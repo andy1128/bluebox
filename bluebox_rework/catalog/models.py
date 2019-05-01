@@ -23,7 +23,7 @@ class Movie(models.Model):
     hd_link = models.URLField(verbose_name='HD Link')
     sd_price = models.CharField(max_length=10, verbose_name='Price of SD Movie')
     hd_price = models.CharField(max_length=10, verbose_name='Price of HD Movie')
-    transactionID = models.ForeignKey(to=Transaction, verbose_name='Transaction ID', on_delete=models.CASCADE)
+    transactionID = models.ForeignKey(to=Transaction, verbose_name='Transaction ID', on_delete=models.CASCADE, null=True)
 
 
     # __str__() method to return a human-redable string for each object.

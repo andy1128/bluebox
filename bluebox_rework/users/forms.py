@@ -1,13 +1,13 @@
 from django import forms
-from users.models import Users
+from users.models import Users, Card
 
 class RegisterForm(forms.ModelForm):
     class Meta:
-        model = Users
+        model = Card
         widget = {
             'email': forms.EmailField(),
             'password': forms.PasswordInput(),
-            'CCVNumber': forms.NumberInput(),
+            'cardNum': forms.NumberInput(),
         }
         body = forms.CharField(widget=forms.Textarea)
         fields = '__all__'
