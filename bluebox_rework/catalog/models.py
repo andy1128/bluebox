@@ -20,6 +20,9 @@ class Movie(models.Model):
     img = models.CharField(max_length=300, verbose_name="Image" )
     img_r = models.CharField(max_length=300, verbose_name="Image R" )
     hd_link = models.URLField(verbose_name='HD Link')
+    sd_price = models.CharField(max_length=10, verbose_name='Price of SD Movie')
+    hd_price = models.CharField(max_length=10, verbose_name='Price of HD Movie')
+
 
     # __str__() method to return a human-redable string for each object.
     def __str__(self):
