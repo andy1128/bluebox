@@ -3,14 +3,24 @@ from users.models import Users, Card
 
 class RegisterForm(forms.ModelForm):
     class Meta:
-        model = Card
+        model = Users
         widget = {
             'email': forms.EmailField(),
             'password': forms.PasswordInput(),
-            'cardNum': forms.NumberInput(),
         }
         body = forms.CharField(widget=forms.Textarea)
-        fields = '__all__'
+        fields = ['name', 'lastName', 'email', 'password', 'DOB', 'userName',]
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        widget = {
+            'cardNum': forms.IntegerField(),
+            'expirationDate': forms.DateInput(),
+            'ccvNum': forms.IntegerField(),
+
+        }
+        fields = ['cardNum', 'expirationDate', 'ccvNum',]
 
 class LoginForm(forms.ModelForm):
     class Meta:
