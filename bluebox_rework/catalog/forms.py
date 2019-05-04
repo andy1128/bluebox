@@ -1,10 +1,13 @@
 from django import forms
-from users.models import Users
+from users.models import Card
 
 class CheckoutForm(forms.ModelForm):
     class Meta:
-        model = Users
+        model = Card
         widget = {
-            'CCVNumber': forms.NumberInput(),
+            'Card Number': forms.NumberInput(),
+            'name': forms.CharField(),
+            'lastName': forms.CharField(),
+
         }
-        fields = ['name', 'lastName', 'CCVNumber', 'expirationDate',]
+        fields = ['cardNum', 'expirationDate', 'ccvNum']

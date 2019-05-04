@@ -1,5 +1,5 @@
 from django import forms
-from users.models import Users
+from users.models import Users, Card
 
 class RegisterForm(forms.ModelForm):
     class Meta:
@@ -7,10 +7,20 @@ class RegisterForm(forms.ModelForm):
         widget = {
             'email': forms.EmailField(),
             'password': forms.PasswordInput(),
-            'CCVNumber': forms.NumberInput(),
         }
         body = forms.CharField(widget=forms.Textarea)
-        fields = '__all__'
+        fields = ['name', 'lastName', 'email', 'password', 'DOB', 'userName',]
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        widget = {
+            'cardNum': forms.IntegerField(),
+            'expirationDate': forms.DateInput(),
+            'ccvNum': forms.IntegerField(),
+
+        }
+        fields = ['cardNum', 'expirationDate', 'ccvNum',]
 
 class LogixnForm(forms.ModelForm):
     class Meta:
