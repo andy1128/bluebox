@@ -25,8 +25,8 @@ def Index(request):
     #     search_query = request.GET.get('search_box', None) #Obtain the value from the search box and asssign it to search_query
     #     print(search_query)
     # return render(request, template_name)
-    if request.method == 'POST':
-        form = IndexForm(request.POST)
+    if request.method == 'GET':
+        form = IndexForm(request.GET)
         if form.is_valid():
             search = form.cleaned_data['search']
             print(search)
