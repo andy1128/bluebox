@@ -11,3 +11,6 @@ class CheckoutForm(forms.ModelForm):
 
         }
         fields = ['cardNum', 'expirationDate', 'ccvNum']
+
+class IndexForm(forms.Form):
+    search = forms.CharField()

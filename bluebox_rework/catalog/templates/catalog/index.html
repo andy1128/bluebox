@@ -13,67 +13,12 @@
 
 
     <h1>This is a heading for index</h1>
-    <!-- <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image"> -->
-   
-
-
-    <!-- <div class="jumbotron jumbotron-fluid" >
-        <div  class="container">            
-            <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image">
-        </div>
-    </div>    
-    <div>
-        <div class="container" >
-            <div class="row">
-                <h1 class="display-6">Movies</h1>
-            </div>
-        <hr/>
-        <div class="container mr-5">
-            <div class="input-group" mt-5>
-                <input type="text" class="form-control" placeholder="Enter movie name here">
-                    <div class="input-group-prepend">
-                        <button class="btn bnt-outline-secondary" type="button">&#x1F50D;</button>
-                </div>
-            </div>
-            </div>     -->
-            <!-- {% load crispy_forms_tags %} -->
-            <!-- {% block content %} -->
-            
-             <!-- <div class="container" id="id_image">
-            </div> -->
-            <!-- {% endblock %} -->
-            <!-- <div class="container mt-5">
-                <div class="row justify-content-center">
-                    <form action="actionURL" method="GET">
-                        <button class="btn btn-dark"type="button" onclick="addMovie()">Load more movies</button>  
-                    </form>
-                </div>
-                <script type="text/javascript">
-                    DJANGO_STATIC_URL = '{{ STATIC_URL }}';
-                    function addMovie() {
-                    //    alert("Hi");                        
-                        var img = document.createElement("IMG");
-                        img.src = "/static/catalog/bluebox_logo.png";
-
-                    //    document.getElementsByClassName("container").appendChild(img);
-                        document.getElementById('id_image').appendChild(img);
-
-                    }
-                </script>
-            </div>
-        </div>
-    
-    </div> -->
+    <h1>asdfljsdlkf asdfds fjaldksfj </h1>
+    <form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="Submit">Submit</button>
+    </form>
 </body>
 </head>
 </html>
-<!-- <form method="GET" action="testIndex.html">
-        {% csrf_token %}
-            {{form|crispy}}
-
-         
-
-
-        </form> -->
-
-        <!-- <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image"> -->
