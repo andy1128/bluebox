@@ -12,24 +12,41 @@ from catalog.forms import CheckoutForm, IndexForm
 def Index(request):
 
     template_name = 'catalog/index.html'
+    form = IndexForm()
+    movies = Movie.objects.all()
 
-    # Waiting for juan to tell me where the form class for this is
-    # form = Movie()
+    print(movies)
 
-    # movies = Movie.objects.all()
-    # movies.get(0)
+    args = {'form': form, 'movies': movies}
 
-    # args = {'form': form, 'movies': movies}
 
-    # if request.method == 'GET': #If the form is submitted
-    #     search_query = request.GET.get('search_box', None) #Obtain the value from the search box and asssign it to search_query
-    #     print(search_query)
-    # return render(request, template_name)
-    if request.method == 'POST':
-        form = IndexForm(request.POST)
+    return render(request, template_name, args)
+    if request.method == 'GET':
+        form = IndexForm(request.GET)
         if form.is_valid():
             search = form.cleaned_data['search']
-            print(search)
+            testVar = search
+        testList = list()
+        for i in Movie.objects.all():
+            if testVar in i.title:
+                testList.append(str(i.img_r))
+            if testVar in i.year:
+                testList.append(str(i.year))
+            if testVar in i.director:
+                if i.img_r not in testList:
+                    testList.append(str(i.img_r))
+            if testVar in i.actors:
+                if i.img_r not in testList:
+                    testList.append(str(i.img_r))
+            if testVar in i.genre:
+                if i.img_r not in testList:
+                    testList.append(str(i.img_r))
+            if i.title == "Good Will Hunting":
+                print(testList)
+            #return testList
+            if len(testList) == 0:
+                print("No movies avaialable")
+        
     form = IndexForm()
     return render(request, template_name, {'form': form})
 
