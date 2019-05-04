@@ -4,15 +4,27 @@ from catalog.models import Movie
 from catalog.forms import CheckoutForm
 
 
+
 # Create your views here.
 # def index(request):
 #     return render(request, 'catalog/index.html')
 
 def Index(request):
+
+    template_name = 'catalog/index.html'
+
+    # Waiting for juan to tell me where the form class for this is
+    # form = Movie()
+
+    movies = Movie.objects.all()
+    movies.get(0)
+
+    # args = {'form': form, 'movies': movies}
+
     if request.method == 'GET': #If the form is submitted
         search_query = request.GET.get('search_box', None) #Obtain the value from the search box and asssign it to search_query
         print(search_query)
-    return render(request, 'catalog/index.html')
+    return render(request, template_name)
 
 def checkout(request):
     if request.method == 'POST':
@@ -23,7 +35,6 @@ def checkout(request):
             CCVNumber = form.cleaned_data['CCVNumber']
             expirationDate = form.cleaned_data['expirationDate']
             print(name, lastName, CCVNumber, expirationDate)
-
     form = CheckoutForm()
     return render(request, 'catalog/checkout.html', {'form': form})
 

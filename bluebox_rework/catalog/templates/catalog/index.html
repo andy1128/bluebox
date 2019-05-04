@@ -10,7 +10,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'catalog/index_style.css' %}">
     <script src="{% static 'catalog/indexjs.js' %}"></script>
 <body class="body_class">    
-    <div class="jumbotron jumbotron-fluid" >
+
+
+    <h1>This is a heading for index</h1>
+    <!-- <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image"> -->
+   
+
+
+    <!-- <div class="jumbotron jumbotron-fluid" >
         <div  class="container">            
             <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image">
         </div>
@@ -28,20 +35,18 @@
                         <button class="btn bnt-outline-secondary" type="button">&#x1F50D;</button>
                 </div>
             </div>
-            </div>    
-            {% load crispy_forms_tags %}
-            {% block content %}
-            <form method="GET" action="testIndex.html">
-            {% csrf_token %}
-                {{form|crispy}}
-            </form>
-            <div class="container" id="id_image">  
-                <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image">
-            </div>
-            {% endblock %}
-            <div class="container mt-5">
+            </div>     -->
+            <!-- {% load crispy_forms_tags %} -->
+            <!-- {% block content %} -->
+            
+             <!-- <div class="container" id="id_image">
+            </div> -->
+            <!-- {% endblock %} -->
+            <!-- <div class="container mt-5">
                 <div class="row justify-content-center">
-                    <button class="btn btn-dark"type="button" onclick="addMovie()">Load more movies</button>  
+                    <form action="actionURL" method="GET">
+                        <button class="btn btn-dark"type="button" onclick="addMovie()">Load more movies</button>  
+                    </form>
                 </div>
                 <script type="text/javascript">
                     DJANGO_STATIC_URL = '{{ STATIC_URL }}';
@@ -58,7 +63,17 @@
             </div>
         </div>
     
-    </div>
+    </div> -->
 </body>
 </head>
 </html>
+<!-- <form method="GET" action="testIndex.html">
+        {% csrf_token %}
+            {{form|crispy}}
+
+         
+
+
+        </form> -->
+
+        <!-- <img src="{% static 'catalog/bluebox_logo.png' %}" class="img-fluid" alt="Responsive image"> -->
