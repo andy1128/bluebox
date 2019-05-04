@@ -22,7 +22,7 @@ class PaymentForm(forms.ModelForm):
         }
         fields = ['cardNum', 'expirationDate', 'ccvNum',]
 
-class LogixnForm(forms.ModelForm):
+class LoginForm(forms.ModelForm):
     class Meta:
         model = Users
         widget = {
