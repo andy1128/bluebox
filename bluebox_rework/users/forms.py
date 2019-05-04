@@ -12,7 +12,7 @@ class RegisterForm(forms.ModelForm):
         body = forms.CharField(widget=forms.Textarea)
         fields = '__all__'
 
-class LoginForm(forms.ModelForm):
+class LogixnForm(forms.ModelForm):
     class Meta:
         model = Users
         widget = {
