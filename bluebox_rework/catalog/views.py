@@ -14,17 +14,18 @@ def Index(request):
     template_name = 'catalog/index.html'
     form = IndexForm()
     movies = Movie.objects.all()
+    
 
-    print(movies)
+    # print(movies)
 
     args = {'form': form, 'movies': movies}
 
 
     return render(request, template_name, args)
     if request.method == 'GET':
-        form = IndexForm(request.GET)
-        if form.is_valid():
-            search = form.cleaned_data['search']
+        formSearch = IndexForm(request.GET)
+        if formSearch.is_valid():
+            search = formSearch.cleaned_data['search']
             testVar = search
         testList = list()
         for i in Movie.objects.all():
@@ -46,9 +47,11 @@ def Index(request):
             #return testList
             if len(testList) == 0:
                 print("No movies avaialable")
-        
-    form = IndexForm()
-    return render(request, template_name, {'form': form})
+    
+   
+
+    # formSearch = IndexForm()
+    # return render(request, template_name, {'form': formSearch})
 
 def checkout(request):
     if request.method == 'POST':

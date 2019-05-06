@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from users.forms import RegisterForm, PaymentForm, LoginForm, ForgotForm
+from catalog.forms import IndexForm
 from django.contrib.auth import authenticate, login
+from users.models import Users
 
 # This function obtains the data submitted by the user, passes the data through the .is_valid class which makes sure the data is consistent with the backend
 # and prints the data to command prompt, thus demonstrating that we are currently receiving user data.
@@ -27,12 +29,21 @@ def Register(request):
         return render(request, 'users/register.html', {'formRegister': formRegister, 'formPayment': formPayment})
 
 def Login(request):
+        template_name = 'catalog/index.html'
         if request.method == 'POST':
                 form = LoginForm(request.POST)
                 if form.is_valid():
                         userName = form.cleaned_data['userName']
                         password = form.cleaned_data['password']
-                        print(userName, password)
+                        testVar = userName # get user input from website
+                        testVar2 = password # get user input from website
+
+                for i in Users.objects.all():
+                        if testVar == i.userName and testVar2 == i.password:
+                                return render(request, template_name)
+                        else:
+                                return("Not Accepted")
+
         form = LoginForm()
         return render(request, 'users/login.html', {'form': form} )
 
