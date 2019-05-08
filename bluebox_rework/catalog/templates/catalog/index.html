@@ -11,7 +11,6 @@
     <script src="{% static 'catalog/indexjs.js' %}"></script>
 <body class="body_class">    
 
-
     <h1>This is a heading for index</h1>
     <form method="GET">
     {% csrf_token %}
@@ -20,104 +19,59 @@
     <button type="button" onclick="showSearchedMovie()">Reload with movie chosen</button>
     </form>
 
-    <!-- <img src = '/static/catalog/YourName.jpg'></img> -->
-    <div id="image_cont">
-
+    <div class="container" id="image_cont">
         {% for movie in movies %}
-        <!-- <div id='{{movie.id}}'> -->
-            <a id='{{movie.id}}' data-link="{{movie.link}}" data-img="{{movie.img}}" onclick='chckOutPage(this.id, this.getAttribute("data-link"), this.getAttribute("data-img") )'> 
+            <a id='{{movie.id}}' data-link="{{movie.link}}" data-img="{{movie.img}}" data-director="{{movie.director}}" data-actors="{{movie.actors}}" data-sd_price="{{movie.sd_price}}" data-title="{{movie.title}}"  onclick='chckOutPage(this.id, this.getAttribute("data-link"), this.getAttribute("data-img"),  this.getAttribute("data-director"), this.getAttribute("data-actors"), this.getAttribute("data-sd_price"), this.getAttribute("data-title"))'> 
                     <img src='{{movie.img_r}}'></img>
-                </a>
-                <!-- </div> -->
-                
+                </a>        
         {% endfor %}
     </div>
 
     <script type="text/javascript">
-        function chckOutPage(clicked_id, clicked_link, clicked_img){
-            var image_id = document.getElementById(clicked_id);
-            window.location.href = "checkout.html" + '#' + clicked_id + '#' + clicked_link + '#' + clicked_img;
-           }
+        function chckOutPage(clicked_id, clicked_link, clicked_img, clicked_director, clicked_actors, clicked_sd_price,clicked_title){
+            // var image_id = document.getElementById(clicked_id);
+            // alert(clicked_link);
+            window.location.href = "checkout.html" + '#' + clicked_id + '#' + clicked_link + '#' + clicked_img + '#' + clicked_director + '#' + clicked_actors + '#' + clicked_sd_price + '#' + clicked_title;
+        
+        }
 
         function showSearchedMovie(){
 
-
-            
-
             document.getElementById("image_cont").innerHTML = ' ';
             var image_local = "{{search_result}}";
-            // image_local = image_local.replace("[&#39;", "");
-            // image_local = image_local.replace("&#39;]", "");
-            // image_local = image_local.replace("&#39;", "");
-            // image_local = image_local.replace("\'", "");
-            // image_local = image_local.replace(/["']/g, "");
-
-
-            // document.write(image_local);
-
-            var image = document.createElement("img");
-            
-            
-            image.src = image_local;
         
-            
-            
             if(image_local.search(',')){
                 image_local = image_local.split(',');
 
-                // document.write(Array.isArray(image_local));
-
-                var i;
-                
+                var i;                
                 var arrayLenght = image_local.length; 
                 for (i = 0; i < arrayLenght; i++) { 
                     image_local[i] = image_local[i].replace("'", "");
-                    // image_local[i] = String(image_local[i]).replace(/["']/g, "");
-
-
-                    var image = document.createElement("img");
-
+                    
                     var dir = image_local[i];
                     dir = dir.replace("[&#39;", "");
                     dir = dir.replace("&#39;]", "");
                     dir = dir.replace("&#39;", "");
                     dir = dir.replace("&", "");
-                    // dir = dir.trim(-5);
-                    // dir = dir.replace("&#39;", "");
-          
 
+                    var image_click = document.createElement("a");
+                    // image_click.href = "checkout.html"
+                    image_click.id = "image_" + i;
+                    image_click.setAttribute('image_click_src', dir);
+                    image_click.onclick = function(){
+                        window.location.href = "checkout.html" + '#' + image_click.getAttribute('image_click_src');
+                    } ;
+                    document.getElementById('image_cont').appendChild(image_click);
+                  
+
+                    var image = document.createElement("img");
+                  
                     image.src = dir;
-                    document.getElementById('image_cont').appendChild(image);
-        
-
-                    // document.write(image_local[i]);
-                }
-
-                
+                    document.getElementById('image_' + i).appendChild(image);
+                }   
             }
-            
-
-
-
-
-           
-            
-            // document.write(typeof image_local);
-
-            document.getElementById('image_cont').appendChild(image);
-
-
-
-
-            // document.body.insertAdjacentElement(image);
-            // document.body.appendChild(document.getElementById('image_cont'));
-            // alert(document.getElementById('work').innerHTML)
-
         }
-
-
     </script>
-    
 </body>
 </head>
 </html>

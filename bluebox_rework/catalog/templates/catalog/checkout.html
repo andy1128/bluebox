@@ -4,22 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initia-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Document</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'users/stylesheet.css' %}">
 <body>
     <h1>Check Out Page </h1>
-    <h2 id="heading2"> This is headign 2 </h2>
+    <div class="container">
+        <h2 id="movie_title"></h2>
+        <img id='img_id' src=""></img>
+    </div>
+    <div class="container">
+        <h3 id="movie_director"></h3>
+        <h3 id="movie_actors"></h3>
+        <h3 id="movie_sd_price"></h3>
+    </div>
     <form method="POST">
     {% csrf_token %}
     {{ form }}
-    <button type="Submit">Submit</button>
+    <button type="Submit" class="btn btn-dark">Submit</button>
     </form>
 
     <script type="text/javascript">
+        window.onload = getURL();
         function getURL(){
+            var image = window.location.href; // Grab the URL
+            
+            image = image.split('#'); // Split upon #
 
-            document.getElementById("heading2").innerHTML = window.location.href;
+            var image_src =  ""; // Var to hold image 
+
+            var i;                
+            var arrayLenght = image.length;
+            for (i = 0; i < arrayLenght; i++) { 
+
+                if(arrayLenght == 2){
+                    image_src = image[1];
+                    var img_tag = document.getElementById('img_id');
+                    image_src = image_src.replace("R.", '.');
+                    img_tag.src = image_src; 
+                }
+                else{
+                    image_src = image[3];
+                    var img_tag = document.getElementById('img_id');
+                    img_tag.src = image_src; 
+                    var pattern = "%20",
+                    re = new RegExp(pattern, "g");
+                    document.getElementById('movie_title').innerHTML = image[7].replace(/%20/g, ' ');
+                    document.getElementById('movie_director').innerHTML = "Director: " + image[4].replace(/%20/g, ' ');
+                    document.getElementById('movie_actors').innerHTML = "Actors: " + image[5].replace(/%20/g, ' ');
+                    document.getElementById('movie_sd_price').innerHTML = "Price: " + image[6];
+
+                }
+                   
+            }   
+
 
 
         }
