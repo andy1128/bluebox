@@ -20,7 +20,8 @@
                 <form class="form_class mr-5" method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button type="submit" class="btn btn-dark login_style mt-2">Login</button>
+                    <button type="submit" class="btn btn-dark login_style mt-2">Login</button> 
+                    <!-- <button type="submit" class="btn btn-dark login_style mt-2" onClick="javascript:window.location.href='catalog/index.html'">Login</button> -->
                 </form>
                 {% endblock %}
             </div>

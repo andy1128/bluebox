@@ -23,13 +23,15 @@ def Register(request):
                         ccvNum = formPayment.cleaned_data['ccvNum']
                         formRegister.save() # This method pushes data into the database
                         formPayment.save()
+                        return HttpResponseRedirect('login.html')
+                else:
+                        return render(request, 'users/register.html', {'formRegister': formRegister, 'formPayment': formPayment} )
 
         formRegister = RegisterForm()
         formPayment = PaymentForm()
         return render(request, 'users/register.html', {'formRegister': formRegister, 'formPayment': formPayment})
 
 def Login(request):
-        template_name = 'catalog/index.html'
         if request.method == 'POST':
                 form = LoginForm(request.POST)
                 if form.is_valid():
@@ -40,9 +42,9 @@ def Login(request):
 
                 for i in Users.objects.all():
                         if testVar == i.userName and testVar2 == i.password:
-                                return render(request, template_name)
+                                return HttpResponseRedirect('/bluebox/index')
                         else:
-                                return("Not Accepted")
+                                return render(request, 'users/login.html', {'form': form})
 
         form = LoginForm()
         return render(request, 'users/login.html', {'form': form} )
@@ -50,9 +52,15 @@ def Login(request):
 def Forgot(request):
         if request.method == 'POST':
                 form = ForgotForm(request.POST)
-                if form.is_valid:
+                if form.is_valid():
                         email = form.cleaned_data['email']
-                        print(email)
+                        testVar = email
+                
+                for i in Users.objects.all():
+                        if testVar == i.email:
+                                return HttpResponseRedirect('login.html')
+                        else:
+                                return render(request, 'users/forgot.html', {'form': form})
         form = ForgotForm()
         return render(request, 'users/forgot.html', {'form': form} )
 

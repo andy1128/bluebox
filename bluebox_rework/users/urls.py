@@ -7,4 +7,3 @@ urlpatterns = [
     path('login.html', views.Login, name = 'Login Page' ),
     path('forgot.html', views.Forgot, name = 'Forgot Page'),
 ]
-  
