@@ -17,37 +17,102 @@
     {% csrf_token %}
     {{ form }}
     <button type="Submit">Submit</button>
+    <button type="button" onclick="showSearchedMovie()">Reload with movie chosen</button>
     </form>
 
     <!-- <img src = '/static/catalog/YourName.jpg'></img> -->
- 
-    {% for movie in movies %}
-    <!-- <div id='{{movie.id}}'> -->
-        <a id='{{movie.id}}' data-link="{{movie.link}}" data-img="{{movie.img}}" onclick='chckOutPage(this.id, this.getAttribute("data-link"), this.getAttribute("data-img") )'> 
-                <h1>{{movie.id}}: {{movie.title}}</h1>           
-                <img src='{{movie.img_r}}'></img>
-            </a>
-    <!-- </div> -->
-        
-    {% endfor %}
+    <div id="image_cont">
 
- 
+        {% for movie in movies %}
+        <!-- <div id='{{movie.id}}'> -->
+            <a id='{{movie.id}}' data-link="{{movie.link}}" data-img="{{movie.img}}" onclick='chckOutPage(this.id, this.getAttribute("data-link"), this.getAttribute("data-img") )'> 
+                    <img src='{{movie.img_r}}'></img>
+                </a>
+                <!-- </div> -->
+                
+        {% endfor %}
+    </div>
 
     <script type="text/javascript">
         function chckOutPage(clicked_id, clicked_link, clicked_img){
-            // var image_source = document.getElementById(clicked_id).getElementsByTagName('img');
             var image_id = document.getElementById(clicked_id);
             window.location.href = "checkout.html" + '#' + clicked_id + '#' + clicked_link + '#' + clicked_img;
+           }
 
-            // if(image_source.length > 0){
-            //     img_src = image_source[0].getAttribute('src');
-            // }
-            // alert(img_src);
+        function showSearchedMovie(){
 
-            // localStorage.setItem('mov', image_id)
-            // movie_name = localStorage.getItem('mov')
 
-            // alert(clicked_id);
+            
+
+            document.getElementById("image_cont").innerHTML = ' ';
+            var image_local = "{{search_result}}";
+            // image_local = image_local.replace("[&#39;", "");
+            // image_local = image_local.replace("&#39;]", "");
+            // image_local = image_local.replace("&#39;", "");
+            // image_local = image_local.replace("\'", "");
+            // image_local = image_local.replace(/["']/g, "");
+
+
+            // document.write(image_local);
+
+            var image = document.createElement("img");
+            
+            
+            image.src = image_local;
+        
+            
+            
+            if(image_local.search(',')){
+                image_local = image_local.split(',');
+
+                // document.write(Array.isArray(image_local));
+
+                var i;
+                
+                var arrayLenght = image_local.length; 
+                for (i = 0; i < arrayLenght; i++) { 
+                    image_local[i] = image_local[i].replace("'", "");
+                    // image_local[i] = String(image_local[i]).replace(/["']/g, "");
+
+
+                    var image = document.createElement("img");
+
+                    var dir = image_local[i];
+                    dir = dir.replace("[&#39;", "");
+                    dir = dir.replace("&#39;]", "");
+                    dir = dir.replace("&#39;", "");
+                    dir = dir.replace("&", "");
+                    // dir = dir.trim(-5);
+                    // dir = dir.replace("&#39;", "");
+          
+
+                    image.src = dir;
+                    document.getElementById('image_cont').appendChild(image);
+        
+
+                    // document.write(image_local[i]);
+                }
+
+                
+            }
+            
+
+
+
+
+           
+            
+            // document.write(typeof image_local);
+
+            document.getElementById('image_cont').appendChild(image);
+
+
+
+
+            // document.body.insertAdjacentElement(image);
+            // document.body.appendChild(document.getElementById('image_cont'));
+            // alert(document.getElementById('work').innerHTML)
+
         }
 
 
