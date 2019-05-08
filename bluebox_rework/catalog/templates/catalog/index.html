@@ -11,14 +11,23 @@
     <script src="{% static 'catalog/indexjs.js' %}"></script>
 <body class="body_class">    
 
-    <h1>Bluebox: The Greatest thing since slice bread!</h1>
-    <form method="GET">
-    {% csrf_token %}
-    {{ form }}
-    <button type="Submit">Submit</button>
-    <button type="button" onclick="showSearchedMovie()">Reload with movie chosen</button>
-    </form>
+    <div class="container">
+        <img src='/static/catalog/bluebox_logo.png'></div>
+    </div>
 
+
+    <div class="container">
+            <form method="GET">
+            {% csrf_token %}
+            {{ form }}
+            <button type="button" class="btn btn-dark" onclick="showSearchedMovie()">Search</button>
+            <button type="submit" class="btn btn-dark invisible" onclick="showSearchedMovie()">Submit</button>
+            
+            </form>
+
+            <br>
+
+    </div>
     <div class="container" id="image_cont">
         {% for movie in movies %}
             <a id='{{movie.id}}' data-link="{{movie.link}}" data-img="{{movie.img}}" data-director="{{movie.director}}" data-actors="{{movie.actors}}" data-sd_price="{{movie.sd_price}}" data-title="{{movie.title}}"  onclick='chckOutPage(this.id, this.getAttribute("data-link"), this.getAttribute("data-img"),  this.getAttribute("data-director"), this.getAttribute("data-actors"), this.getAttribute("data-sd_price"), this.getAttribute("data-title"))'> 
@@ -26,6 +35,11 @@
                 </a>        
         {% endfor %}
     </div>
+    <br>
+
+    <div class="container">
+        <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div>    
 
     <script type="text/javascript">
         function chckOutPage(clicked_id, clicked_link, clicked_img, clicked_director, clicked_actors, clicked_sd_price,clicked_title){
@@ -71,7 +85,11 @@
                 }   
             }
         }
-    </script>
+        function logout(){
+            window.location.href = "logout.html";
+        }
+
+    </script>    
 </body>
 </head>
 </html>

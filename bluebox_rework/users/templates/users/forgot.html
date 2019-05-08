@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'users/forgot_style.css' %}">
     <title>Forgot</title>
   </head>
 <body class="body_class">
+    <div class="container">
+        <img src='/static/catalog/bluebox_logo.png'></div>
+      </div>
       <div class="container mr-5 mt-5" >
-          <div class="row justify-content-center">
-              <div  class="col-6 mt-5" >
+          <div>
+              <div  class="col-4 mt-5" >
                 <h1 class="mt-5 ml-5"  >Reset</h1>
                 <hr id="id_line" class="ml-1" width="180px" margin-left="10px"/>
                 {% load crispy_forms_tags %}
@@ -21,7 +23,7 @@
                     {% csrf_token %}
                     {{ form.email|as_crispy_field }}
                     <button type="submit" class="btn btn-dark login_style mt-2">Login</button>
-                </form>
+                  </form>
                 {% endblock %}
             </div>
         </div>

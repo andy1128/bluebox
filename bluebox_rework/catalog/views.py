@@ -59,3 +59,6 @@ def checkout(request):
 
 def viewpage(request):
     return render(request, 'catalog/viewpage.html')
+
+def logout(request):
+    return render(request, 'catalog/logout.html')

@@ -9,6 +9,9 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'users/stylesheet.css' %}">
 <body>
+    <div class="container">
+        <img src='/static/catalog/bluebox_logo.png'></div>
+    </div>
     <h1>Check Out Page </h1>
     <div class="container">
         <h2 id="movie_title"></h2>
@@ -22,12 +25,25 @@
     <form method="POST">
     {% csrf_token %}
     {{ form }}
-    <button type="Submit" class="btn btn-dark">Submit</button>
+    <button type="submit" class="btn btn-dark" onclick="viewMovie()">Submit</button>
     </form>
-
+    <div class="container">
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </div>    
     <script type="text/javascript">
+        
+        movie_index = "";
+        movie_url = "";
+        
         window.onload = getURL();
+
+
+
         function getURL(){
+
+            // var button = document.getElementsByClassName("btn");
+            // button.
+
             var image = window.location.href; // Grab the URL
             
             image = image.split('#'); // Split upon #
@@ -54,15 +70,29 @@
                     document.getElementById('movie_director').innerHTML = "Director: " + image[4].replace(/%20/g, ' ');
                     document.getElementById('movie_actors').innerHTML = "Actors: " + image[5].replace(/%20/g, ' ');
                     document.getElementById('movie_sd_price').innerHTML = "Price: " + image[6];
-
+                    movie_index = image[1];
+                    movie_url = image[2];
                 }
+
+                
+
+
                    
             }   
 
+        }
+        
+        function viewMovie(){
+            window.location.href = "viewpage.html" + '#' + movie_index + '#' + movie_url;
+        }
+
+        function logout(){
+
+            window.location.href = "logout.html";
 
 
         }
-        
+
     
     </script>
 

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 
+
 # include('catalog.urls') tells django to look in the urls.py file contained within the catalog subfolderto check if the url that the user is currently is trying to access matches a url pattern contained within this file.
 urlpatterns = [
     path('admin/', admin.site.urls),

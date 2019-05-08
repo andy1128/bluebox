@@ -34,20 +34,30 @@
     </style>
 
 <body>
-    <h1 id='heading'>Baby come back</h1>    
-    
     <div class="i_frame">
 
-        <iframe id="video" 
-        src="lakdsjfa" 
-        frameborder="0" allowfullscreen>
-        </iframe>   
+        <iframe id="video" src="" frameborder="0" allowfullscreen></iframe>   
     </div>
     
     <script>
+        
+    window.onload = load_movie();
+    // document.getElementById('video').src = window.location.hash.substring(3);
     
-    document.getElementById('video').src = window.location.hash.substring(3);
-    
+        function load_movie(){
+
+            var movie = window.location.href;
+            movie = movie.split('#'); // Split upon #
+
+            var arrayLenght = movie.length;
+            for (i = 0; i < arrayLenght; i++) { 
+                movie_src = movie[2];
+                var movie_tag = document.getElementById('video');
+                // movie_tag = movie_tag.replace("R.", '.');
+                movie_tag.src = movie_src; 
+            }   
+        }
+
     </script>
 
 </body>
